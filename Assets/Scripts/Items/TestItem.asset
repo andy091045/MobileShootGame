@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4313d0331cf8d084781c5ff26bff577e, type: 3}
   m_Name: TestItem
   m_EditorClassIdentifier: 
-  name: New Item
-  Icon: {fileID: 0}
+  name: Common Name
+  Icon: {fileID: 21300000, guid: eb5f6e2757c821940b69cf1456f7865a, type: 3}
   Space: 10
-  ItemText: 
+  ItemText: This is only for test purpose
