@@ -5,14 +5,17 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     #region  Singleton
-    public static Inventory inventory;
+    public static Inventory instance;
     private void Awake()
     {
-        inventory = this;
+        instance = this;
     }
     #endregion
     public List<Item> items = new List<Item>();
     public int Space = 500;
+
+    public delegate void OnUIChange();
+    public OnUIChange GetOnUIChange;
 
     public void AddItem(Item item)
     {
@@ -20,5 +23,15 @@ public class Inventory : MonoBehaviour
         if (Space <= 0)
             return;
         items.Add(item);
+        if (GetOnUIChange != null)
+            GetOnUIChange.Invoke();
+    }
+
+    public void RemoveItem(Item item)
+    {
+        Space += item.Space;
+        items.Remove(item);
+        if (GetOnUIChange != null)
+            GetOnUIChange.Invoke();
     }
 }
